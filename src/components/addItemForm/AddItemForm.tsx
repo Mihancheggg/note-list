@@ -14,8 +14,8 @@ export const AddItemForm = (props: AddItemFormPropsType) => {
     }
 
     const onAddNoteClickHandler = () => {
-        if(noteText.trim()){
-            if(noteText.trim().length < 100){
+        if (noteText.trim()) {
+            if (noteText.trim().length < 100) {
                 props.addItem(noteText.trim())
                 setNoteText('')
             } else {

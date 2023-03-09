@@ -2,7 +2,7 @@ import { v1 } from 'uuid';
 
 //state
 const initialState: NotesStateType = {
-    notes: [{id: v1(),text: 'Test!'}]
+    notes: [{id: v1(), text: 'Test!'}]
 }
 
 //reducer
@@ -11,11 +11,16 @@ export const notesReducer = (state: NotesStateType = initialState, action: Notes
         case 'NOTES/SET_NOTES':
             return {...state, notes: action.payload.notes}
         case 'NOTES/UPDATE_NOTE':
-            return {...state, notes: [...state.notes.map(el=> el.id === action.payload.noteID ? {...el, text: action.payload.newText} : el )]}
+            return {...state,
+                notes: [...state.notes.map(el => el.id === action.payload.noteID ? {
+                    ...el,
+                    text: action.payload.newText
+                } : el)]
+            }
         case 'NOTES/ADD_NOTE':
-            return {...state, notes:[action.payload, ...state.notes]}
+            return {...state, notes: [action.payload, ...state.notes]}
         case 'NOTES/DELETE_NOTE':
-            return {...state, notes: [...state.notes.filter(el=> el.id !== action.payload.noteID)]}
+            return {...state, notes: [...state.notes.filter(el => el.id !== action.payload.noteID)]}
         default:
             return state
     }
@@ -28,7 +33,7 @@ export const setNotesAC = (notes: Array<NoteType>) => {
         payload: {
             notes
         }
-    }as const
+    } as const
 }
 
 export const addNoteAC = (noteText: string) => {
@@ -38,7 +43,7 @@ export const addNoteAC = (noteText: string) => {
             id: v1(),
             text: noteText
         }
-    }as const
+    } as const
 }
 
 export const updateNoteAC = (noteID: string, newText: string) => {
@@ -48,7 +53,7 @@ export const updateNoteAC = (noteID: string, newText: string) => {
             noteID,
             newText
         }
-    }as const
+    } as const
 }
 
 export const deleteNoteAC = (noteID: string) => {
@@ -57,7 +62,7 @@ export const deleteNoteAC = (noteID: string) => {
         payload: {
             noteID
         }
-    }as const
+    } as const
 }
 
 //types
