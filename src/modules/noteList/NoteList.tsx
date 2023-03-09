@@ -7,6 +7,7 @@ type NoteListPropsType = {
 }
 
 export const NoteList = (props: NoteListPropsType) => {
+    console.log('render note list')
     const {notes} = props
 
     return (

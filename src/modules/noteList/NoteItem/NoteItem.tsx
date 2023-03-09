@@ -1,7 +1,7 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import { EditableSpan } from '../../../components/editableSpan/EditableSpan';
 import { useAppDispatch } from '../../../app/store';
-import { NoteType, updateNoteAC } from '../notesReducer';
+import { deleteNoteAC, NoteType, updateNoteAC } from '../notesReducer';
 
 type NoteItemPropsType = {
     note: NoteType
@@ -11,14 +11,18 @@ const NoteItem = (props: NoteItemPropsType) => {
     const dispatch = useAppDispatch()
     const {note} = props
 
-    const onNoteTextUpdateHandler = useCallback((newText: string) => {
+    const onNoteTextUpdateHandler = (newText: string) => {
         dispatch(updateNoteAC(note.id, newText))
-    },[dispatch, note])
+    }
+
+    const deleteNote = () => {
+        dispatch(deleteNoteAC(note.id))
+    }
 
     return (
         <div>
             <EditableSpan text={note.text} onChange={onNoteTextUpdateHandler}/>
-            <button onClick={() => {}}>Delete</button>
+            <button onClick={deleteNote}>Delete</button>
         </div>
     );
 };

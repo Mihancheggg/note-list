@@ -6,11 +6,12 @@ import { addNoteAC, NoteType } from '../modules/noteList/notesReducer';
 import { NoteList } from '../modules/noteList/NoteList';
 
 function App() {
+    console.log('render app')
     const dispatch = useAppDispatch()
-    const notes = useAppSelector(state => state.notesData.notes)
+    const notes = useAppSelector<Array<NoteType>>(state => state.notesData.notes)
 
-    const addItem = (note: NoteType): void => {
-        dispatch(addNoteAC(note))
+    const addItem = (noteText: string): void => {
+        dispatch(addNoteAC(noteText))
     }
     return (
         <div className="App">

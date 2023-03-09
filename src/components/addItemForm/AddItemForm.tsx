@@ -1,28 +1,31 @@
 import React, { ChangeEvent, useState } from 'react';
-import { NoteType } from '../../modules/noteList/notesReducer';
-import { v1 } from 'uuid';
 
 type AddItemFormPropsType = {
-    addItem: (note: NoteType) => void
+    addItem: (noteText: string) => void
 }
 
 export const AddItemForm = (props: AddItemFormPropsType) => {
-    const [note, setNote] = useState<NoteType>({id: v1(), text: ''})
+    console.log('render add item form')
+    const [noteText, setNoteText] = useState<string>('')
 
     const onNoteChangeHandler = (e: ChangeEvent<HTMLInputElement>): void => {
-        setNote({...note, text: e.currentTarget.value})
+        setNoteText(e.currentTarget.value.trim())
     }
 
     const onAddNoteClickHandler = () => {
-        props.addItem(note)
-        setNote({id: v1(), text: ''})
+        if(noteText){
+            props.addItem(noteText)
+            setNoteText('')
+        } else {
+            alert('Empty string can\'t be added')
+        }
     }
 
     return (
-        <form>
-            <input type="text" placeholder="New note" name="note" value={note.text} onChange={onNoteChangeHandler}/>
+        <div>
+            <input type="text" placeholder="New note" name="note" value={noteText} onChange={onNoteChangeHandler}/>
             <button onClick={onAddNoteClickHandler}>Add note</button>
-        </form>
+        </div>
     );
 };
 
