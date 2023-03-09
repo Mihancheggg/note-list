@@ -73,7 +73,7 @@ type addNoteACType = ReturnType<typeof addNoteAC>
 type updateNoteACType = ReturnType<typeof updateNoteAC>
 type deleteNoteACType = ReturnType<typeof deleteNoteAC>
 
-type NotesStateType = {
+export type NotesStateType = {
     notes: Array<NoteType>
 }
 
