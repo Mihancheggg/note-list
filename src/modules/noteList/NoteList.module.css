@@ -1,0 +1,12 @@
+.list{
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    margin: 30px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: antiquewhite;
+}

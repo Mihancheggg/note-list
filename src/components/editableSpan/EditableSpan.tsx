@@ -14,8 +14,17 @@ export const EditableSpan = (props: EditableSpanPropsType) => {
         setTitle(props.text);
     }
     const activateViewMode = () => {
-        setEditMode(false);
-        props.onChange(title);
+        if (title.trim()) {
+            if (title.trim().length < 100) {
+                setEditMode(false);
+                props.onChange(title.trim());
+            } else {
+                alert('Maximum length is 100 symbols')
+            }
+        } else {
+            alert('String can\'t be empty')
+        }
+
     }
     const changeTitle = (e: ChangeEvent<HTMLInputElement>) => {
         setTitle(e.currentTarget.value)

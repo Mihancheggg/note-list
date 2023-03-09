@@ -1,4 +1,5 @@
 import React, { ChangeEvent, useState } from 'react';
+import styles from './AddItemForm.module.css'
 
 type AddItemFormPropsType = {
     addItem: (noteText: string) => void
@@ -9,20 +10,24 @@ export const AddItemForm = (props: AddItemFormPropsType) => {
     const [noteText, setNoteText] = useState<string>('')
 
     const onNoteChangeHandler = (e: ChangeEvent<HTMLInputElement>): void => {
-        setNoteText(e.currentTarget.value.trim())
+        setNoteText(e.currentTarget.value)
     }
 
     const onAddNoteClickHandler = () => {
-        if(noteText){
-            props.addItem(noteText)
-            setNoteText('')
+        if(noteText.trim()){
+            if(noteText.trim().length < 100){
+                props.addItem(noteText.trim())
+                setNoteText('')
+            } else {
+                alert('Maximum length is 100 symbols')
+            }
         } else {
             alert('Empty string can\'t be added')
         }
     }
 
     return (
-        <div>
+        <div className={styles.addingForm}>
             <input type="text" placeholder="New note" name="note" value={noteText} onChange={onNoteChangeHandler}/>
             <button onClick={onAddNoteClickHandler}>Add note</button>
         </div>

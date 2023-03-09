@@ -7,7 +7,6 @@ const initialState: NotesStateType = {
 
 //reducer
 export const notesReducer = (state: NotesStateType = initialState, action: NotesReducerActionTypes): NotesStateType => {
-    debugger
     switch (action.type) {
         case 'NOTES/SET_NOTES':
             return {...state, notes: action.payload.notes}

@@ -2,6 +2,7 @@ import React from 'react';
 import { EditableSpan } from '../../../components/editableSpan/EditableSpan';
 import { useAppDispatch } from '../../../app/store';
 import { deleteNoteAC, NoteType, updateNoteAC } from '../notesReducer';
+import styles from './NoteItem.module.css'
 
 type NoteItemPropsType = {
     note: NoteType
@@ -20,9 +21,9 @@ const NoteItem = (props: NoteItemPropsType) => {
     }
 
     return (
-        <div>
+        <div className={styles.item}>
             <EditableSpan text={note.text} onChange={onNoteTextUpdateHandler}/>
-            <button onClick={deleteNote}>Delete</button>
+            <button className={styles.btn} onClick={deleteNote}>Delete</button>
         </div>
     );
 };

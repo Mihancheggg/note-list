@@ -1,0 +1,9 @@
+.addingForm{
+    padding: 20px;
+    width: 100%;
+    max-width: 300px;
+    background-color: antiquewhite;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+}

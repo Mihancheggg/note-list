@@ -1,0 +1,12 @@
+.item{
+    width: 100%;
+    margin: 10px 30px;
+    padding-bottom: 3px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid gray;
+}
+
+.btn{
+    margin-left: 20px;
+}
