@@ -3,6 +3,7 @@ import './App.css';
 import { AddItemForm } from '../components/addItemForm/AddItemForm';
 import { useAppDispatch, useAppSelector } from './store';
 import { addNoteAC, NoteType } from '../modules/noteList/notesReducer';
+import { NoteList } from '../modules/noteList/NoteList';
 
 function App() {
     const dispatch = useAppDispatch()
@@ -14,6 +15,7 @@ function App() {
     return (
         <div className="App">
             <AddItemForm addItem={addItem}/>
+            <NoteList notes={notes}/>
         </div>
     );
 }
